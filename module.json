@@ -1,0 +1,22 @@
+{
+  "name": "naethure-amalgamation",
+  "title": "Naethure's Amalgamation",
+  "description": "A set of utilities built by Naethure.",
+  "version": "",
+  "author": "Naethure",
+  "minimumCoreVersion": "0.7.9",
+  "socket": true,
+  "system": "dnd5e",
+  "url": "",
+  "manifest": "",
+  "download": "",
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "esmodules": ["js/index.js"],
+  "styles": ["css/style.css"]
+}

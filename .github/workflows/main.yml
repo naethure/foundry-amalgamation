@@ -1,0 +1,88 @@
+name: Module CI/CD
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    #Install SASS via NPM
+    - name: Install SASS
+      run: npm install sass
+
+    #Get version from the root version file
+    - name: Get Version
+      shell: bash
+      id: get-version
+      run: echo "::set-output name=version::$(cat version)"
+
+    #Compile SCSS from scss to css
+    - name: Compile SCSS
+      run: ./node_modules/.bin/sass scss:css
+
+    #Compile TS from ts to js based on tsconfig.json
+    - name: Compile TS
+      run: tsc
+
+    #Populate the Manifest File for the Versioned release (project url, manifest url, download url, version)
+    - name: Populate Manifest File - Versioned
+      uses: microsoft/variable-substitution@v1
+      with:
+        files: 'module.json'
+      env:
+        version: ${{steps.get-version.outputs.version}}
+        url: https://github.com/${{github.repository}}
+        manifest: https://github.com/${{github.repository}}/releases/latest/download/module.json
+        download: https://github.com/${{github.repository}}/releases/download/${{steps.get-version.outputs.version}}/module.zip
+
+    #Zip all files for the Versioned release
+    - name: Zip Files - Versioned
+      run: zip -r module.zip .
+
+    # Update the 'latest' release
+    - name: Update Versioned Release
+      uses: ncipollo/release-action@v1
+      if: endsWith(github.ref, 'main')
+      with:
+        allowUpdates: false
+        name: Release ${{ steps.get-version.outputs.version }}
+        draft: false
+        prerelease: false
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: 'module.json, module.zip'
+        tag: ${{ steps.get-version.outputs.version }}
+        commit: 'main'
+
+    #Populate the Manifest File for the Latest release (project url, manifest url, download url, version)
+    - name: Populate Manifest File - Latest
+      uses: microsoft/variable-substitution@v1
+      with:
+        files: 'module.json'
+      env:
+        version: ${{steps.get-version.outputs.version}}
+        url: https://github.com/${{github.repository}}
+        manifest: https://github.com/${{github.repository}}/releases/latest/download/module.json
+        download: https://github.com/${{github.repository}}/releases/latest/download/module.zip
+
+    #Zip all files for the Latest release
+    - name: Zip Files - Versioned
+      run: zip -r module.zip .
+
+    # Update the 'latest' release
+    - name: Update Latest Release
+      uses: ncipollo/release-action@v1
+      if: endsWith(github.ref, 'main')
+      with:
+        allowUpdates: true
+        name: Latest
+        draft: false
+        prerelease: false
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: 'module.json, module.zip'
+        tag: latest
+        commit: 'main'
