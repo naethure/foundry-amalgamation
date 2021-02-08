@@ -8,17 +8,11 @@ export interface IClientSettings {
     set(module: string, key: string, value: any): void;
     get(module: string, key: string): any;
 }
-/*export const ClientSettings: IClientSettings = {
+export const ClientSettings: IClientSettings = {
     register: (module: string, key: string, data: any) => game.settings.register(module, key, data),
     set: (module: string, key: string, value: any) => game.settings.set(module, key, value),
     get: (module: string, key: string) => game.settings.get(module, key)
-}*/
-export const ClientSettings: IClientSettings = {
-    register: game.settings.register,
-    set: game.settings.set,
-    get: game.settings.get
 }
-
 
 export interface IHookManager {
     call(hook: string, ...args: Array<any>): void;
@@ -35,7 +29,7 @@ export const HookManager: IHookManager = {
     once: Hooks.once
 }
 export function RunOnInit(fn: () => void): void {
-    Hooks.once(Constants.Hooks.Ready, fn);
+    Hooks.once(Constants.Hooks.Init, fn);
 }
 
 
