@@ -1,2 +1,12 @@
 {
+    "Naethure": {
+        "Settings": {
+            "WeightedDice": {
+                "Enabled": {
+                    "Title": "Use Weighted d20",
+                    "Description": "Replace all d20 rolls with a specially-weighted d20. Weighting for each result is as follows. 1: 2.00% 2: 2.40%, 3: 2.80%, 4: 3.20%, 5: 3.70%, 6: 4.25%, 7: 5.40%, 8: 6.25%, 9: 7.10%, 10: 8.00%, 11: 8.25%, 12: 7.20%, 13: 6.50%, 14: 5.70%, 15: 5.20%, 16: 4.85%, 17: 4.60%, 18: 4.40%, 19: 4.20%, 20: 4.00%."
+                }
+            }
+        }
+    }
 }
