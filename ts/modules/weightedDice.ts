@@ -9,6 +9,8 @@ declare const CONFIG: any;
 FoundryInterop.HookManager.once(Constants.Hooks.Init, () => {
 
     const enabledSetting = new Settings.BooleanSetting("WeightedDice.Enabled", FoundryInterop.Localization.localize("Naethure.Settings.WeightedDice.Enabled.Title"), FoundryInterop.Localization.localize("Naethure.Settings.WeightedDice.Enabled.Description"), Settings.SettingScope.World, true);
+    enabledSetting.Register();
+    
     const weightedDiceModule = new Modules.Module("Weighted Dice", enabledSetting, true, true);
 
     weightedDiceModule.RegisterHook(Constants.Hooks.Ready, () => {
