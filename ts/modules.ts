@@ -28,6 +28,7 @@ export class Module {
                 }
             });
         }
+        isEnabledSetting.Register();
         Modules.push(this);
     }
 
