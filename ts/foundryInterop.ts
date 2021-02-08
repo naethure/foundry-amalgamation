@@ -35,7 +35,7 @@ export const HookManager: IHookManager = {
     once: Hooks.once
 }
 export function RunOnInit(fn: () => void): void {
-    HookManager.once(Constants.Hooks.Init, fn);
+    Hooks.once(Constants.Hooks.Ready, fn);
 }
 
 
