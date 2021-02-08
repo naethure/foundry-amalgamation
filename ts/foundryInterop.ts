@@ -1,5 +1,3 @@
-import * as Constants from "./constants.js";
-
 declare const game: any;
 declare const Hooks: any;
 
@@ -28,10 +26,6 @@ export const HookManager: IHookManager = {
     on: Hooks.on,
     once: Hooks.once
 }
-export function RunOnInit(fn: () => void): void {
-    Hooks.once(Constants.Hooks.Init, fn);
-}
-
 
 export interface ILocalization {
     localize(key: string): string;
