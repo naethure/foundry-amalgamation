@@ -1,7 +1,7 @@
-import * as Settings from "../settings";
-import * as Constants from "../constants";
-import * as FoundryInterop from "../foundryInterop";
-import * as Modules from "../modules"
+import * as Settings from "../settings.js";
+import * as Constants from "../constants.js";
+import * as FoundryInterop from "../foundryInterop.js";
+import * as Modules from "../modules.js"
 
 declare const DiceTerm: any;
 declare const CONFIG: any;

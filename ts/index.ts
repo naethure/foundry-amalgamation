@@ -1,1 +1,1 @@
-import './modules/weightedDice';
+import './modules/weightedDice.js';

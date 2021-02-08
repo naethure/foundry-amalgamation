@@ -1,6 +1,6 @@
-import * as Settings from "./settings";
-import * as Constants from "./constants";
-import * as FoundryInterop from "./foundryInterop";
+import * as Settings from "./settings.js";
+import * as Constants from "./constants.js";
+import * as FoundryInterop from "./foundryInterop.js";
 
 export class Module {
     name: string;

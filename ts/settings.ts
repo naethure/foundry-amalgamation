@@ -1,5 +1,5 @@
-import * as Constants from "./constants";
-import * as FoundryInterop from "./foundryInterop";
+import * as Constants from "./constants.js";
+import * as FoundryInterop from "./foundryInterop.js";
 
 export enum SettingScope {
     Client = "client",
