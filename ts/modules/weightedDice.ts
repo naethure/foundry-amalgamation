@@ -3,11 +3,10 @@ import * as Constants from "../constants.js";
 import * as FoundryInterop from "../foundryInterop.js";
 import * as Modules from "../modules.js"
 
-declare const Hooks: any;
 declare const DiceTerm: any;
 declare const CONFIG: any;
 
-Hooks.once(Constants.Hooks.Init, () => {
+FoundryInterop.HookManager.once(Constants.Hooks.Init, () => {
 
     const enabledSetting = new Settings.BooleanSetting("WeightedDice.Enabled", FoundryInterop.Localization.localize("Naethure.Settings.WeightedDice.Enabled.Title"), FoundryInterop.Localization.localize("Naethure.Settings.WeightedDice.Enabled.Description"), Settings.SettingScope.World, true);
     const weightedDiceModule = new Modules.Module("Weighted Dice", enabledSetting, true, true);

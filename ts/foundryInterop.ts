@@ -20,11 +20,11 @@ export interface IHookManager {
     once(hook: string, fn: ((...args: Array<any>) => void) | ((...args: Array<any>) => boolean)): number;
 }
 export const HookManager: IHookManager = {
-    call: Hooks.call,
-    callAll: Hooks.callAll,
-    off: Hooks.off,
-    on: Hooks.on,
-    once: Hooks.once
+    call: (hook: string, ...args: Array<any>) => Hooks.call(hook, ...args),
+    callAll: (hook: string, ...args: Array<any>) => Hooks.callAll(hook, ...args),
+    off: (hook: string, fn: ((...args: Array<any>) => void) | ((...args: Array<any>) => boolean) | number) => Hooks.off(hook, fn),
+    on: (hook: string, fn: ((...args: Array<any>) => void) | ((...args: Array<any>) => boolean)) => Hooks.on(hook, fn),
+    once: (hook: string, fn: ((...args: Array<any>) => void) | ((...args: Array<any>) => boolean)) => Hooks.once(hook, fn)
 }
 
 export interface ILocalization {
