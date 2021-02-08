@@ -23,7 +23,7 @@ export interface IHooks {
 }
 export declare const Hooks: IHooks;
 export function RunOnInit(fn: () => void): void {
-    Hooks.once(Constants.Hooks.Init, fn);
+    Hooks.once(Constants.Hooks.Ready, fn);
 }
 
 
