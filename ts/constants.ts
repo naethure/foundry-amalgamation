@@ -1,4 +1,4 @@
-export const ModuleShortName: string = "NaethureAmalgamation";
+export const ModuleShortName: string = "naethures-amalgamation";
 
 
 export enum Hooks {
