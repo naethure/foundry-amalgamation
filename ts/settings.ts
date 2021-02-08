@@ -13,7 +13,7 @@ interface SettingsData {
     config: boolean;
     type: object;
     default: unknown;
-    callback?(value: unknown): void;
+    onChange?(value: unknown): void;
 }
 
 export abstract class Setting {
@@ -57,7 +57,7 @@ export abstract class TypedSetting<T> extends Setting {
             default: this.defaultValue,
         };
         if(this.callbacks.length > 0) {
-            data.callback = (value: T) => {
+            data.onChange = (value: T) => {
                 for(const callback of this.callbacks) {
                     callback(value);
                 }
