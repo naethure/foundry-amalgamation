@@ -5,6 +5,7 @@
   "version": "",
   "author": "Naethure",
   "minimumCoreVersion": "0.7.9",
+  "compatibleCoreVersion": "0.7.9",
   "socket": true,
   "system": "dnd5e",
   "url": "",

@@ -1,5 +1,6 @@
-declare const game: any;
+import * as Constants from "./constants.js";
 
+declare const game: any;
 
 export interface IClientSettings {
     register(module: string, key: string, data: any): void;
@@ -21,6 +22,9 @@ export interface IHooks {
     once(hook: string, fn: ((...args: Array<any>) => void) | ((...args: Array<any>) => boolean)): number;
 }
 export declare const Hooks: IHooks;
+export function RunOnInit(fn: () => void): void {
+    Hooks.once(Constants.Hooks.Init, fn);
+}
 
 
 export interface ILocalization {
