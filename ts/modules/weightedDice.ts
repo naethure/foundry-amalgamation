@@ -55,6 +55,6 @@ FoundryInterop.HookManager.once(Constants.Hooks.Init, () => {
     });
 
     UnweightedDie.DENOMINATION = "u";
-    Dice.types.push(UnweightedDie);
-    Dice.terms["u"] = UnweightedDie;
+    CONFIG.Dice.types.push(UnweightedDie);
+    CONFIG.Dice.terms["u"] = UnweightedDie;
 });
