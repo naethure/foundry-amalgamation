@@ -10,11 +10,17 @@
             "TileOpacityControls": {
                 "Enabled": {
                     "Title": "Enable Hidden Tile Opacity Controls",
-                    "Description": "Enables thecontrol buttons in the Tile menu to change the opacity of hidden tiles; activates the below setting."
+                    "Description": "Enables the control buttons in the Tile menu to change the opacity of hidden tiles; activates the below setting."
                 },
                 "CurrentOpacity": {
                     "Title": "Current Hidden Tile Opacity",
                     "Description": "Controls the current percent opacity for hidden tiles for the GM."
+                }
+            },
+            "SemiTransparentTokens": {
+                "Enabled": {
+                    "Title": "Enable Semi-Transparent Tokens",
+                    "Description": "Enables a control button in the Token (basic) menu to toggle a token's semi-transparency."
                 }
             }
         },
@@ -23,6 +29,11 @@
                 "IncreaseOpacity": "Increase Opacity by 10%",
                 "ResetOpacity": "Reset Opacity to 50%",
                 "DecreaseOpacity":"Decrease Opacity by 10%"   
+            }
+        },
+        "SemiTransparentTokens": {
+            "ControlTitles:": {
+                "ToggleTokenSemiTransparency": "Toggle Token Semi-Transparency"
             }
         }
     }
