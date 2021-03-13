@@ -69,6 +69,7 @@ FoundryInterop.HookManager.on(Constants.Hooks.Init, () => {
             this.nameplate.visible = this._canViewMode(this.data.displayName);
             this.bars.visible = this._canViewMode(this.data.displayBars);
         };
+        canvas.getLayer("TokenLayer").placeables.forEach((x:any) => x.refresh())
     });
     semiTransparentTokensModule.RegisterHook(Constants.Hooks.GetSceneControlButtons, (controls: Control[]) => {
         if (!game.user.isGM) return;
