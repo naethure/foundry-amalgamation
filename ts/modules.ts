@@ -35,7 +35,7 @@ export class Module {
     RegisterHook(hook: Constants.Hooks, fn: ((...args: Array<any>) => void) | ((...args: Array<any>) => boolean)): Module {
         if(!RegisteredHooks.has(hook)) {
             RegisteredHooks.set(hook, []);
-            let id = FoundryInterop.HookManager.on(hook, (...args) => HookCallback(hook, args));
+            let id = FoundryInterop.HookManager.on(hook, (...args) => HookCallback(hook, ...args));
             RegisteredHookIds.set(hook, id);
         }
         RegisteredHooks.get(hook)!.push({module: this, hook: hook, fn: fn});
@@ -74,7 +74,7 @@ function HookCallback(hook: Constants.Hooks, ...args: Array<any>): boolean {
     let registeredHooks =  RegisteredHooks.get(hook)!;
     for(const registeredHook of registeredHooks) {
         if(registeredHook.module.isEnabledSetting.GetValue()) {
-            if(registeredHook.fn(args) === false) {
+            if(registeredHook.fn(...args) === false) {
                 return false;
             }
         }
