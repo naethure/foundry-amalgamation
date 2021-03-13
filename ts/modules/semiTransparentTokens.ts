@@ -27,6 +27,8 @@ declare const Token: any;
 declare const toRadians: any;
 declare const canvas: any;
 
+const flagName = "semiTransparent";
+
 FoundryInterop.HookManager.on(Constants.Hooks.Init, () => {
 
     const enabledSetting = new Settings.BooleanSetting("SemiTransparentTokens.Enabled", FoundryInterop.Localization.localize("Naethure.Settings.SemiTransparentTokens.Enabled.Title"), FoundryInterop.Localization.localize("Naethure.Settings.SemiTransparentTokens.Enabled.Description"), Settings.SettingScope.World, true);
@@ -55,7 +57,7 @@ FoundryInterop.HookManager.on(Constants.Hooks.Init, () => {
             // Set rotation, position, and opacity
             this.icon.rotation = toRadians(this.data.lockRotation ? 0 : this.data.rotation);
             this.icon.position.set(this.w / 2, this.h / 2);
-            if(this.data.semiTransparent) {
+            if(!!this.getFlag(Constants.ModuleShortName, flagName)) {
                 this.icon.alpha = this.data.hidden ? 0.25 : 0.75;
             } else {
                 this.icon.alpha = this.data.hidden ? 0.5 : 1.0;
@@ -80,7 +82,7 @@ FoundryInterop.HookManager.on(Constants.Hooks.Init, () => {
             title: "Naethure.SemiTransparentTokens.ControlTitles.ToggleTokenSemiTransparency",
             icon: "fas fa-star-half",
             button: true,
-            onClick: () => canvas.getLayer("TokenLayer").controlled.forEach((x:any) => x.update({"semiTransparent": !x.data.semiTransparent}))
+            onClick: () => canvas.getLayer("TokenLayer").controlled.forEach((x:any) => x.setFlag(Constants.ModuleShortName, flagName, !x.getFlag(Constants.ModuleShortName, flagName)))
         });
     });
 });
