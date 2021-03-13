@@ -26,6 +26,7 @@ declare const game: any;
 declare const Tile: any;
 declare const toRadians: any;
 declare const NormalizedRectangle: any;
+declare const canvas: any;
 
 FoundryInterop.HookManager.on(Constants.Hooks.Init, () => {
 
@@ -34,6 +35,7 @@ FoundryInterop.HookManager.on(Constants.Hooks.Init, () => {
     
     const opacitySetting = new Settings.NumberSetting("TileOpacityControls.CurrentOpacity", FoundryInterop.Localization.localize("Naethure.Settings.TileOpacityControls.CurrentOpacity.Title"), FoundryInterop.Localization.localize("Naethure.Settings.TileOpacityControls.CurrentOpacity.Description"), Settings.SettingScope.World, 50);
     opacitySetting.SetRange(0, 100, 1);
+    opacitySetting.RegisterCallback((_) => canvas.getLayer("TilesLayer").placeables.forEach((x:any) => x.refresh()));
     opacitySetting.Register();
 
     tileOpacityControlsModule.RegisterHook(Constants.Hooks.Ready, () => {
